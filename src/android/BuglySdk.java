@@ -2,8 +2,6 @@ package com.polaris.cordova.bugly;
 
 import android.content.Context;
 import android.util.Log;
-import android.webkit.WebSettings;
-import android.webkit.WebView;
 import com.tencent.bugly.crashreport.CrashReport;
 import com.tencent.bugly.crashreport.CrashReport.UserStrategy;
 import com.tencent.bugly.crashreport.crash.h5.H5JavaScriptInterface;
@@ -25,19 +23,15 @@ public class BuglySdk extends CordovaPlugin {
     public void initialize(CordovaInterface cordova, CordovaWebView webView) {
         super.initialize(cordova, webView);
         APP_ID = webView.getPreferences().getString(BUGLY_APP_ID, "");
-        WebView view = (WebView) webView.getView();
         jsReportHandler = new CrashReport.a() {
             @Override
             public final String a() {
-                return view.getUrl();
+                return webView.getUrl();
             }
 
             @Override
             public final void b() {
-                WebSettings var1;
-                if (!(var1 = view.getSettings()).getJavaScriptEnabled()) {
-                    var1.setJavaScriptEnabled(true);
-                }
+                // 开启javascript
             }
 
             @Override
@@ -51,7 +45,7 @@ public class BuglySdk extends CordovaPlugin {
 
             @Override
             public final CharSequence c() {
-                return view.getContentDescription();
+                return webView.getView().getContentDescription();
             }
         };
     }
@@ -164,10 +158,8 @@ public class BuglySdk extends CordovaPlugin {
                 }
                 if (h5JavaScriptInterface != null) {
                     h5JavaScriptInterface.reportJSException(message);
-                    callbackContext.success();
-                } else {
-                    callbackContext.error("未开启javascript异常监控");
                 }
+                callbackContext.success();
             }
         });
 
