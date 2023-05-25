@@ -1,8 +1,8 @@
 {
-  "name": "cordova-plugin-bugly-sdk",
-  "version": "1.0.0",
+  "name": "cordova-plugin-bugly-iot-sdk",
+  "version": "1.0.1",
   "cordova": {
-    "id": "cordova-plugin-bugly-sdk",
+    "id": "cordova-plugin-bugly-iot-sdk",
     "platforms": [
       "android"
     ]
