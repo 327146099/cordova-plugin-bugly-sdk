@@ -104,7 +104,6 @@
       } catch (v) {}
     } else g = !1
     w(a, 'onerror', function (b) {
-      console.log(b)
       return 'undefined' != typeof Bugly_TESTING &&
       (c._onerror = b), function (d, f, g, i, j) {
         !i && a.event && (i = a.event.errorCharacter), e = null, h || r({
