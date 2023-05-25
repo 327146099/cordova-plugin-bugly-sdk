@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<plugin xmlns="http://apache.org/cordova/ns/plugins/1.0"
+    id="cordova-plugin-bugly-sdk"
+    version="1.0.0">
+
+  <name>Bugly</name>
+  <description>Bugly SDK Cordova Plugin </description>
+
+  <preference name="ANDROID_APPID" value=""/>
+  <js-module name="BuglySdk" src="www/buglySdk.js">
+    <clobbers target="BuglySdk"/>
+  </js-module>
+  <!-- android -->
+  <platform name="android">
+    <framework src="src/android/libs/cordova-bugly-v1.0.0.gradle" custom="true" type="gradleReference"/>
+    <source-file src="src/android/CDVBugly.java" target-dir="src/com/polaris/cordova/bugly" />
+    <config-file target="AndroidManifest.xml" parent="/manifest">
+      <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"></uses-permission>
+      <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"></uses-permission>
+      <uses-permission android:name="android.permission.INTERNET"></uses-permission>
+      <uses-permission android:name="android.permission.READ_PHONE_STATE"></uses-permission>
+      <uses-permission android:name="android.permission.READ_LOGS"></uses-permission>
+    </config-file>
+    <config-file target="AndroidManifest.xml" parent="/manifest/application">
+      <meta-data android:name="BUGLY_APPID" android:value="$ANDROID_APPID" />
+    </config-file>
+    <config-file target="res/xml/config.xml" parent="/*">
+      <feature name="BuglySdk">
+        <param name="android-package" value="com.polaris.cordova.bugly.BuglySdk"/>
+      </feature>
+      <preference name="ANDROID_APPID" value="$ANDROID_APPID"/>
+    </config-file>
+  </platform>
+</plugin>

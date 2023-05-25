@@ -1,0 +1,21 @@
+{
+  "name": "cordova-plugin-bugly-sdk",
+  "version": "1.0.0",
+  "cordova": {
+    "id": "cordova-plugin-bugly-sdk",
+    "platforms": [
+      "android"
+    ]
+  },
+  "description": "Cordova Crash Reporter",
+  "keywords": [
+    "cordova",
+    "bugly",
+    "crash",
+    "anr",
+    "natvie",
+    "exception",
+    "symbol"
+  ],
+  "author":"yangzhou"
+}
