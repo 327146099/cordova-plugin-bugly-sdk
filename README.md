@@ -1,52 +1,36 @@
-# cordova-plugin-bugly-sdk
+## 项目说明	
+
+腾讯[Buyly SDK](https://bugly.qq.com/)的Cordova插件。
 
 
+## 项目使用
 
-cordova plugin for [Tencent Bugly SDK](https://bugly.qq.com/)
-
-you can catch app crash reprot (like android anr, oc expection,js erro etc.) by this plugin.
-
-more info, visit https://bugly.qq.com/docs/
+### 安装
 
 
-
-# Example
-
-[Ionic3 Demo](https://github.com/jasonz1987/ionic-bugly-sdk-demo)
-
-
-
-# Docs
-
-## install
 
 ```shell
-cordova plugin add cordova-plugin-bugly-sdk  --variable ANDROID_APPID=your value --variable IOS_APPID=your value
+cordova plugin add cordova-plugin-bugly-sdk  --variable ANDROID_APPID=your value
 ```
 
 
 
-##  methods
+### 调用
 
 
-**init sdk**
 
-*please notice params difference with each platform*
+**初始化SDK**
 
 ```javascript
 var args = {
-    // common
+    // 通用配置
     debug:true,
     channel:"test",
     develop:true,
     version:"1.0",
-    // android
+    // 安卓配置
     // delay:20000,
     // package:"com.jasonz.bugly.demo",
-    // ios
-    // device_id: "xxx-xxx",
-    // block_monitor_enable: true,
-    // block_monitor_timeout: 10000
 };
 
 Bugly.initSDK(function(success){
@@ -60,59 +44,58 @@ Bugly.initSDK(function(success){
 
 
 
-**enable js error handler**
+**开启Javascript异常捕获（仅安卓）**
+
+
 
 ```javascript
+
+// 手动引入bugly.js
   Bugly.enableJSMonitor();
+
 ```
 
 
 
-**set user indentifier**
+**设置用户ID**
+
+
 
 ```javascript
-  var id = "jason.z";
+  var id = "xxxxx";
   Bugly.setUserID(id);
+
 ```
 
 
 
-**set tag id(id must be numeric)**
+**设置TagID(id必须是数字)**
+
+
 
 ```javascript
   var id = 10086;
   Bugly.setTagID(id);
+
 ```
 
 
 
-**set user define data**
+**设置用户自定义数据**
+
+
 
 
 ```javascript
- var data = {
+
+  var data = {
     key:'id',
     value:1
   };
 
  Bugly.putUserData(id);
+
 ```
-
-
-
-There also have some methods to test app crash, you can see them in demo project code.
-
-
-
-
-# Donate
-
-If this project help you reduce time to develop, you can give me a cup of coffee :)
-
-
-
-[![paypal](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://www.paypal.me/jasonz1987/6.66)
-
 
 
 
